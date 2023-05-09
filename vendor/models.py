@@ -2,7 +2,7 @@
 from django.db import models
 from accounts.models import User, UserProfile
 from accounts.utils import send_notification
-#from datetime import time, date, datetime
+from datetime import time, date, datetime
 
 
 class Vendor(models.Model):
@@ -18,7 +18,7 @@ class Vendor(models.Model):
     def __str__(self):
         return self.vendor_name
 
-    """def is_open(self):
+    def is_open(self):
         # Check current day's opening hours.
         today_date = date.today()
         today = today_date.isoweekday()
@@ -37,7 +37,7 @@ class Vendor(models.Model):
                     break
                 else:
                     is_open = False
-        return is_open"""
+        return is_open
 
     def save(self, *args, **kwargs):
         if self.pk is not None:
@@ -61,7 +61,7 @@ class Vendor(models.Model):
         return super(Vendor, self).save(*args, **kwargs)
 
 
-"""DAYS = [
+DAYS = [
     (1, ("Monday")),
     (2, ("Tuesday")),
     (3, ("Wednesday")),
@@ -84,4 +84,4 @@ class OpeningHour(models.Model):
         unique_together = ('vendor', 'day', 'from_hour', 'to_hour')
 
     def __str__(self):
-        return self.get_day_display()"""
+      return self.get_day_display()
